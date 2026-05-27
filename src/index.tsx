@@ -330,6 +330,8 @@ class ReactQuill extends React.Component<ReactQuillProps, ReactQuillState> {
   */
   createEditor(element: Element, config: QuillOptions) {
     const editor = new Quill(element, config);
+    // Prevent browser auto-translation from mutating editor contents while typing.
+    editor.root.setAttribute('translate', 'no');
     if (config.tabIndex != null) {
       this.setEditorTabIndex(editor, config.tabIndex);
     }

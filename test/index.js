@@ -50,6 +50,12 @@ describe('<ReactQuill />', function() {
     expect(quill instanceof Quill).to.equal(true);
   });
 
+  it('disables browser translation on the editable root', () => {
+    const wrapper = mountReactQuill();
+    const quill = getQuillInstance(wrapper);
+    expect(quill.root.getAttribute('translate')).to.equal('no');
+  });
+
   it('passes options to Quill from props', () => {
     const enabledFormats = ['underline', 'bold', 'italic'];
     const props = {
