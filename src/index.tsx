@@ -4,7 +4,6 @@ https://github.com/zenoamaro/react-quill
 */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import isEqual from 'lodash/isEqual';
 
 import Quill, {
@@ -145,9 +144,12 @@ class ReactQuill extends React.Component<ReactQuillProps, ReactQuillState> {
   editor?: Quill
 
   /*
-  Reference to the element holding the Quill editing area.
+  Reference to the element holding the Quill editing area. Typed as `any`
+  because the editing area may be an arbitrary host element supplied through
+  `children` and cloned with `React.cloneElement`, so its concrete element
+  type is not known at compile time.
   */
-  editingArea?: React.ReactInstance | null
+  editingAreaRef = React.createRef<any>()
 
   /*
   Tracks the internal value of the Quill editor
@@ -433,15 +435,19 @@ class ReactQuill extends React.Component<ReactQuillProps, ReactQuillState> {
   }
 
   getEditingArea(): Element {
-    if (!this.editingArea) {
-      throw new Error('Instantiating on missing editing area');
-    }
-    const element = ReactDOM.findDOMNode(this.editingArea);
+    const element = this.editingAreaRef.current;
     if (!element) {
       throw new Error('Cannot find element for editing area');
     }
     if (element.nodeType === 3) {
       throw new Error('Editing area cannot be a text node');
+    }
+    if (!(element instanceof Element)) {
+      throw new Error(
+        'Editing area must be a DOM element. When passing `children` to ' +
+        'ReactQuill, the child must render a host element such as `<div>` ' +
+        'or `<pre>` that can receive a ref.'
+      );
     }
     return element as Element;
   }
@@ -455,9 +461,7 @@ class ReactQuill extends React.Component<ReactQuillProps, ReactQuillState> {
 
     const properties = {
       key: generation,
-      ref: (instance: React.ReactInstance | null) => {
-        this.editingArea = instance
-      },
+      ref: this.editingAreaRef,
     };
 
     if (React.Children.count(children)) {

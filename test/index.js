@@ -185,6 +185,30 @@ describe('<ReactQuill />', function() {
     expect(wrapper.getDOMNode().querySelector('div#venus')).not.to.be.null;
   });
 
+  it('resolves the editing area to a DOM element', () => {
+    const wrapper = mountReactQuill();
+    const editingArea = wrapper.instance().getEditingArea();
+    expect(editingArea.nodeType).to.equal(1);
+    expect(wrapper.getDOMNode().contains(editingArea)).to.equal(true);
+  });
+
+  it('resolves a custom editing area to the element that was provided', () => {
+    const div = React.createFactory('div');
+    const wrapper = mountReactQuill({}, div({ id: 'venus' }));
+    const editingArea = wrapper.instance().getEditingArea();
+    expect(editingArea.id).to.equal('venus');
+  });
+
+  it('regenerates the editing area reference on a dirty prop change', () => {
+    const wrapper = mountReactQuill();
+    const before = wrapper.instance().getEditingArea();
+    wrapper.setProps({ theme: 'bubble' });
+    const after = wrapper.instance().getEditingArea();
+    expect(after.nodeType).to.equal(1);
+    expect(after).not.to.equal(before);
+    expect(wrapper.getDOMNode().contains(after)).to.equal(true);
+  });
+
   /**
    * This can't be tested with the current state of JSDOM.
    * The selection functions have been shimmed in this test suite,
