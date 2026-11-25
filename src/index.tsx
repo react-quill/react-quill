@@ -1,6 +1,6 @@
 /*
 React-Quill
-https://github.com/zenoamaro/react-quill
+https://github.com/react-quill/react-quill
 */
 
 import React from 'react';
@@ -202,7 +202,7 @@ class ReactQuill extends React.Component<ReactQuillProps, ReactQuillState> {
     ) throw new Error(
       'You are passing the `delta` object from the `onChange` event back ' +
       'as `value`. You most probably want `editor.getContents()` instead. ' +
-      'See: https://github.com/zenoamaro/react-quill#using-deltas'
+      'See: https://github.com/react-quill/react-quill#using-deltas'
     );
   }
 
