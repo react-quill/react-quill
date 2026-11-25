@@ -1,4 +1,4 @@
-ReactQuill [![Build Status](https://travis-ci.org/zenoamaro/react-quill.svg?branch=master)](https://travis-ci.org/zenoamaro/react-quill) [![npm](https://img.shields.io/npm/v/react-quill.svg)](https://www.npmjs.com/package/react-quill)
+ReactQuill [![npm](https://img.shields.io/npm/v/react-quill.svg)](https://www.npmjs.com/package/react-quill)
 [![npm downloads](https://img.shields.io/npm/dt/react-quill.svg?maxAge=2592000)](http://www.npmtrends.com/react-quill)
 ==============================================================================
 
@@ -12,7 +12,7 @@ See a [live demo] or [Codepen](http://codepen.io/alexkrolick/pen/xgyOXQ/left?edi
 
 [quill]: https://quilljs.com
 [react]: https://facebook.github.io/react/
-[live demo]: https://zenoamaro.github.io/react-quill/
+[live demo]: https://react-quill.github.io/react-quill/
 
 - [Quick Start](#quick-start)
   - [With webpack or create-react-app](#with-webpack-or-create-react-app)
@@ -400,7 +400,7 @@ class MyComponent extends React.Component {
 
 If you instantiate ReactQuill without children, it will create a `<div>` for you, to be used as the editing area for Quill. If you prefer, you can specify your own element for ReactQuill to use. Note that `<textarea>`s are not supported by Quill at this time.
 
-Note: Custom editing areas lose focus when using React 16 as a peer dep at this time ([bug](https://github.com/zenoamaro/react-quill/issues/309)).
+Note: Custom editing areas lose focus when using React 16 as a peer dep at this time ([bug](https://github.com/react-quill/react-quill/issues/309)).
 
 <details>
 
@@ -479,7 +479,7 @@ Also note that passing a Quill Delta here, and then an HTML string, or vice-vers
 : If true, the editor won't allow changing its contents. Wraps the Quill [`disable` API](https://quilljs.com/docs/api/#enable).
 
 `placeholder`
-: The default value for the empty editor. Note: The Quill API does not support changing this value dynamically. Use refs and data-attributes instead (see [#340](https://github.com/zenoamaro/react-quill/issues/340#issuecomment-376176878)).
+: The default value for the empty editor. Note: The Quill API does not support changing this value dynamically. Use refs and data-attributes instead (see [#340](https://github.com/react-quill/react-quill/issues/340#issuecomment-376176878)).
 
 `modules`
 : An object specifying which modules are enabled, and their configuration. The editor toolbar is a commonly customized module. See the [modules section](http://quilljs.com/docs/modules/) over the Quill documentation for more information on what modules are available.
@@ -667,7 +667,7 @@ Please check the browser support table for the upstream [Quill](https://github.c
 
 ReactQuill would not be where it is today without the contributions of many people, which we are incredibly grateful for:
 
-- @zenoamaro (maintainer)
+- @zenolove (maintainer)
 - @alexkrolick (maintainer)
 - @g12i
 - @clemmy
@@ -698,7 +698,7 @@ ReactQuill would not be where it is today without the contributions of many peop
 
 The MIT License (MIT)
 
-Copyright (c) 2020, zenoamaro <zenoamaro@gmail.com>
+Copyright (c) 2027, ZEN♡LOVE <zenojevski@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
