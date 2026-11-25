@@ -41,7 +41,7 @@ https://github.com/quilljs/quill/issues
 See the [instance methods] and [API] documentation.
 
 [instance methods]:
-https://github.com/zenoamaro/react-quill#methods
+https://github.com/react-quill/react-quill#methods
 
 [API]:
-https://github.com/zenoamaro/react-quill#api-reference
+https://github.com/react-quill/react-quill#api-reference
