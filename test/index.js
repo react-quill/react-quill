@@ -14,6 +14,7 @@ const { Quill } = require('../lib/index');
 const {
   mountReactQuill,
   getQuillInstance,
+  getQuillDOMNode,
   getQuillContentsAsHTML,
   setQuillContentsFromHTML,
   withMockedConsole,
@@ -183,6 +184,13 @@ describe('<ReactQuill />', function() {
     const wrapper = mountReactQuill({}, editingArea);
     const quill = getQuillInstance(wrapper);
     expect(wrapper.getDOMNode().querySelector('div#venus')).not.to.be.null;
+  });
+
+  it('updates tabIndex on the editor when the prop changes', () => {
+    const wrapper = mountReactQuill({ tabIndex: 3 });
+    expect(getQuillDOMNode(wrapper).tabIndex).to.equal(3);
+    wrapper.setProps({ tabIndex: 5 });
+    expect(getQuillDOMNode(wrapper).tabIndex).to.equal(5);
   });
 
   /**

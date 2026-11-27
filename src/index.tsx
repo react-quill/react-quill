@@ -281,6 +281,10 @@ class ReactQuill extends React.Component<ReactQuillProps, ReactQuillState> {
       editor.setContents(delta);
       postpone(() => this.setEditorSelection(editor, selection));
     }
+
+    if (this.editor && this.props.tabIndex !== prevProps.tabIndex) {
+      this.setEditorTabIndex(this.editor, this.props.tabIndex);
+    }
   }
 
   instantiateEditor(): void {
@@ -402,9 +406,13 @@ class ReactQuill extends React.Component<ReactQuillProps, ReactQuillState> {
     }
   }
 
-  setEditorTabIndex(editor: Quill, tabIndex: number) {
-    if (editor?.scroll?.domNode) {
-      (editor.scroll.domNode as HTMLElement).tabIndex = tabIndex;
+  setEditorTabIndex(editor: Quill, tabIndex?: number) {
+    const node = editor?.scroll?.domNode as HTMLElement | undefined;
+    if (!node) return;
+    if (tabIndex != null) {
+      node.tabIndex = tabIndex;
+    } else {
+      node.removeAttribute('tabindex');
     }
   }
 
